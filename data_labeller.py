@@ -2,12 +2,11 @@ import cv2
 from inference_sdk import InferenceHTTPClient
 
 import os
-
-
+api_key =  os.getenv('API_KEY')
 class DataLabeller:
     def __init__(self, 
-                 api_url: str = 'https://detect.roboflow.com', 
-                 api_key: str = '0SFMTISwO3cDXYGiEjFe',
+                 api_url: str = 'https://detect.roboflow.com', ##
+                 api_key: str = api_key,##
                  model_id: str = 'cdc_ocr/1') -> None:
         self.model_id = model_id
         self.CLIENT = InferenceHTTPClient(api_url=api_url, api_key=api_key)
