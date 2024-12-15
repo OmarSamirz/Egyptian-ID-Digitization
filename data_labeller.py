@@ -2,7 +2,7 @@ import cv2
 from inference_sdk import InferenceHTTPClient
 
 import os
-api_key =  os.getenv('API_KEY')
+api_key =  os.getenv('ROBOFLOW_API_KEY')
 class DataLabeller:
     def __init__(self, 
                  api_url: str = 'https://detect.roboflow.com', ##
@@ -12,11 +12,27 @@ class DataLabeller:
         self.CLIENT = InferenceHTTPClient(api_url=api_url, api_key=api_key)
 
     def predict_image(self, img_path: str) -> dict:
+        """Predict image using the Roboflow Inference API.
+
+        Args:
+            img_path (str): Path to the input image.
+
+        Returns:
+            dict: A dictionary containing the predictions for the image.
+        """
+        
         result = self.CLIENT.infer(img_path, model_id=self.model_id)
         return result['predictions']
 
 
     def _save_img(self, img: cv2.typing.MatLike, output_path: str) -> None:
+        """Save the image to the specified output path.
+
+        Args:
+            img (cv2.typing.MatLike): The image to be saved.
+            output_path (str): The path to which the image is saved.
+        """
+        
         cv2.imwrite(output_path, img)
 
 
