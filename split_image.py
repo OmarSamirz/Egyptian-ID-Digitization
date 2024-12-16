@@ -49,8 +49,8 @@ class ImageSegmenter:
         plt.show()
 
 # Example Usage:
-data_labeller = DataLabeller()  
-segmenter = ImageSegmenter(data_labeller)
-img_path = 'test_image.jpg'
-cropped_images = segmenter.segment_and_crop(img_path)
-segmenter.display_segments(cropped_images)
+# data_labeller = DataLabeller()  
+# segmenter = ImageSegmenter(data_labeller)
+# img_path = 'test_image2.jpg'
+# cropped_images = segmenter.segment_and_crop(img_path)
+# segmenter.display_segments(cropped_images)
