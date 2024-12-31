@@ -37,6 +37,16 @@ class DataLabeller:
 
 
     def img_labelling(self, img_path: str) -> tuple[cv2.typing.MatLike, bool]:
+        """Label the image using the predictions from the Roboflow Inference API.
+
+        Args:
+            img_path (str): Path to the input image.
+
+        Returns:
+            tuple[cv2.typing.MatLike, bool]: A tuple containing the labelled image
+                and a boolean indicating whether the image has 5 or 7 predictions.
+        """
+
         predictions = self.predict_image(img_path)
 
         img = cv2.imread(img_path)
@@ -52,6 +62,14 @@ class DataLabeller:
         return (img, True if len(predictions) == 5 or len(predictions) == 7 else False)
     
     def imgs_labelling(self, imgs_path: str, true_imgs_output_path: str, false_imgs_output_path: str) -> None:
+        """Label all images in the given directory and save them to the specified output paths.
+
+        Args:
+            imgs_path (str): Path to the directory containing the input images.
+            true_imgs_output_path (str): Path to the directory where the images with 5 or 7 predictions are saved.
+            false_imgs_output_path (str): Path to the directory where the images without 5 or 7 predictions are saved.
+        """
+        
         os.makedirs(true_imgs_output_path, exist_ok=True)
         os.makedirs(false_imgs_output_path, exist_ok=True)
         images = os.listdir(imgs_path)

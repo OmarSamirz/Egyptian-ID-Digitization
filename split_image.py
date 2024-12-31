@@ -27,6 +27,9 @@ class ImageSegmenter:
             width = int(segment["width"])
             height = int(segment["height"])
 
+            # scaling_factor=1.5
+            # width = int(width * scaling_factor)
+            # height = int(height * scaling_factor)
             cropped = image.crop((x - width / 2, y - height / 2, x + width / 2, y + height / 2))
             cropped_images[segment["class"]] = cropped
 
@@ -51,6 +54,6 @@ class ImageSegmenter:
 # Example Usage:
 # data_labeller = DataLabeller()  
 # segmenter = ImageSegmenter(data_labeller)
-# img_path = 'test_image2.jpg'
+# img_path = 'temp_image.jpg'
 # cropped_images = segmenter.segment_and_crop(img_path)
 # segmenter.display_segments(cropped_images)

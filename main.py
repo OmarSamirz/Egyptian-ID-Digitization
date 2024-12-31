@@ -26,7 +26,7 @@ def main():
     # cv2.imshow('Image', img)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    texts = crop_and_transcribe('test_image.jpg')
+    texts = crop_and_transcribe('test_image3.jpg')
     print(texts)
     with open('texts.txt', 'w') as f:
         for key, value in texts.items():

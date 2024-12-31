@@ -1,5 +1,7 @@
 from google.cloud import vision
 import os
+from PIL import Image
+import io
 
 class TextDetector:
     def __init__(self):
@@ -22,8 +24,10 @@ class TextDetector:
             content = image_file.read()
             image = vision.Image(content=content)
 
+        image_context = vision.ImageContext(language_hints=["ar"])
+
         # Perform text detection
-        response = self.client.text_detection(image=image)
+        response = self.client.text_detection(image=image, image_context=image_context)
         texts = response.text_annotations
 
         if response.error.message:
